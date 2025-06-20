@@ -22,6 +22,8 @@ import pandas as pd
 import regex
 import math
 import unicodedata
+from ToposoidCommon.model import DetectedLanguage
+import ToposoidCommon as tc
 
 #LABEL_REGEX = re.compile(r"^((fig|figure|table|scheme|図|表)+[\.\- 　]*[0-9]+)(.*)")
 #LABEL_REGEX_IN_SENTENCE = re.compile(r"((fig|figure|table|scheme|図|表)+[\.\- 　]*[0-9]+)(.*)")
@@ -548,6 +550,13 @@ def getLang(text):
     if re.search("^" + PROTECT_PERIOD_INDEX_REGEX + "$", text) or re.search("^ " + PROTECT_PERIOD_INDEX_REGEX + "$", text):
         return LANG_UNKNOWN
     
+    try:
+        detectedLanguage:DetectedLanguage = tc.detectLangage(text)
+        return detectedLanguage.lang
+    except:
+        return LANG_UNKNOWN
+    
+    """
     if regex.search(JAPANNESE_REGEX, text):
         return LANG_JP
     else:
@@ -556,8 +565,8 @@ def getLang(text):
         elif re.search(ALPHABET_REGEX, text):
             return LANG_EN
         else:
-            return LANG_UNKNOWN
-
+            return LANG_UNKNOWN    
+    """
 def normalizeLabel(s):
     """Normalize image and table labels
 

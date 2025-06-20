@@ -14,7 +14,7 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-from .PdfExtractorCommon import calcDistance, isHeaderOrFooter, existLabel, getLabels, getLang, getParagraphSeparator, getSentenceSeparator, encodeSentence, decodeSentence, divideTextByLength, cleanLabelSpace, getDummyReplaceStrDict
+from .PdfExtractorCommon import calcDistance, isHeaderOrFooter, existLabel, getLabels, getLang, getParagraphSeparator, getSentenceSeparator, encodeSentence, decodeSentence, divideTextByLength, cleanLabelSpace, getDummyReplaceStrDict, SENTENCE_SEPARATOR_REGEX_UNKNOWN
 from .PdfPreprocess import preprocess, preprocessForTest
 import mojimoji
 import re
@@ -107,6 +107,8 @@ def addBlockString(x, blockBorder, sentenceSeparator, isLast):
     if isLast:
         return x
     else:        
+        if sentenceSeparator == SENTENCE_SEPARATOR_REGEX_UNKNOWN:
+            return x +  blockBorder
         if re.search(sentenceSeparator + "+?$", x):
             terminateSpace = ""
             hit = re.search("(\s+?)$", x) 

@@ -10,6 +10,6 @@ imgsim==0.1.2
 torchvision==0.17.2
 regex==2024.11.6
 PyYAML==6.0.2
--e git+https://github.com/toposoid/toposoid-python-lib.git@feature#egg=ToposoidCommon
+-e git+https://__##GIT_TOKEN##__@github.com/toposoid/toposoid-python-lib.git@main#egg=ToposoidCommon
 
 
