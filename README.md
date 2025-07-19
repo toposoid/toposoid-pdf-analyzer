@@ -19,6 +19,8 @@ After creating the credentials, please set the following environment variables.
 TOPOSOID_PDF_SERVICES_CLIENT_ID
 TOPOSOID_PDF_SERVICES_CLIENT_SECRET
 
+* Please see below for free usage restrictions
+https://developer.adobe.com/document-services/docs/overview/limits/#free-tier
 
 ## License
 This program is offered under a commercial and under the AGPL license.
