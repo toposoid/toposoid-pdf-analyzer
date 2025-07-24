@@ -26,13 +26,6 @@ import ToposoidCommon as tc
 
 LOG = tc.LogUtils(__name__)
 
-documentFeatures = [    
-    DocumentFeatureJapaneseLegal(), 
-    DocumentFeatureEnglishLegal(),
-    DocumentFeatureGeneral(),
-    DocumentFeaturePresentation(),
-    DocumentFeatureOther(),
-]
 
 def isCaptionIdentifier(identifier):
     """Evaluate if text is a caption
@@ -73,6 +66,17 @@ def getDocumentFeature(documentInfoOnPage, headerRatio, footerRatio, transversal
     
     indexMatchs = {}
     captionMatchs = {}
+
+
+    documentFeatures = [    
+        DocumentFeatureJapaneseLegal(), 
+        DocumentFeatureEnglishLegal(),
+        DocumentFeatureGeneral(),
+        DocumentFeaturePresentation(),
+        DocumentFeatureOther(),
+    ]
+
+    #documentFeatures = list(map(lambda x: x.clear() ,documentFeatures))
 
     documerntFeaturesSamePriority = []
     prevPriority = 0
