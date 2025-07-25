@@ -76,7 +76,7 @@ def getDocumentFeature(documentInfoOnPage, headerRatio, footerRatio, transversal
         DocumentFeatureOther(),
     ]
 
-    #documentFeatures = list(map(lambda x: x.clear() ,documentFeatures))
+    documentFeatures = list(map(lambda x: x.clear() ,documentFeatures))
 
     documerntFeaturesSamePriority = []
     prevPriority = 0
