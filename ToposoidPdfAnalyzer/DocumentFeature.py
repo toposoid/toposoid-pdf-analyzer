@@ -245,4 +245,5 @@ class DocumentFeature(metaclass=abc.ABCMeta):
         self.adoptedDocumentFeatureCondition = None
         self.adoptedFrequencyForIndex = 0
         self.x0ForIndices = []
+        return self
   
