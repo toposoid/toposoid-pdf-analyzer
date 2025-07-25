@@ -238,3 +238,11 @@ class DocumentFeature(metaclass=abc.ABCMeta):
             _type_: 
         """
         return self.adoptedFrequencyForIndex
+    
+    def clear(self):
+        self.regexFrequencyDict = {}
+        self.captionFrequencyDict = {} 
+        self.adoptedDocumentFeatureCondition = None
+        self.adoptedFrequencyForIndex = 0
+        self.x0ForIndices = []
+  
