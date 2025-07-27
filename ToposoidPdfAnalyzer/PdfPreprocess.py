@@ -28,6 +28,7 @@ def removeTempDir(documentId):
     """Cleaning the temporary directory
     """
     if os.path.isdir("tmp/" + documentId):
+        os.rename("tmp/" + documentId + "/structuredData.json", "contents/documents/" + documentId + "-structuredData.json") 
         shutil.rmtree("tmp/" + documentId)
 
 
@@ -56,7 +57,7 @@ def preprocess(documentId, filename, headerRatio, footerRatio, transversalState)
 
     #Examine content information for each page
     imageList, tableList = getSelectdContents(documentId, headerRatio, footerRatio, documentInfoOnPage, imagesDict, tablesDict, labels)
-    #Cleaning the temporary directory
+    #Cleaning the temporary directory    
     removeTempDir(documentId)
     return documentInfoOnPage, imageList, tableList, isPageDivisionTarget
 

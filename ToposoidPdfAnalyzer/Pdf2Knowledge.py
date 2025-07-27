@@ -26,7 +26,7 @@ LOG = tc.LogUtils(__name__)
 class Pdf2Knowledge(): 
     """Main class that converts PDF convert into Toposoid knowledge.
     """
-    def pdf2Knowledge(documentId, filename, transversalState, headerRatio=0.05, footerRatio=0.05, deepDivideFlag=False, isTest=False):
+    def pdf2Knowledge(self, documentId, filename, transversalState, headerRatio=0.05, footerRatio=0.05, deepDivideFlag=False, isTest=False):
         try:
             LOG.info("pdf2Knowledge started", transversalState)
             propositions = mergePdfContents(documentId, filename, transversalState, headerRatio=headerRatio, footerRatio=footerRatio, deepDivideFlag=deepDivideFlag, isTest=isTest)            

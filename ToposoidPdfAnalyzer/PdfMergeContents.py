@@ -418,7 +418,7 @@ def makeKnowledgeForNoRefference(documentId, filename, linkedContentDict, conten
         
         if len(knowledgeForImages) > 0 or len(knowledgeForTables) > 0 or (len(pageInfo.references) > 0 and isNonSentenceOnly) or (len(pageInfo.tableOfContents) > 0 and isNonSentenceOnly) or (len(pageInfo.headlines) > 0 and isNonSentenceOnly):
             documentPageReference = DocumentPageReference(pageNo=pageId, references=pageInfo.references, tableOfContents=pageInfo.tableOfContents, headlines = pageInfo.headlines, titleOfTopPage=pageInfo.titleOfTopPage)
-            knowledges.append(Knowledge(sentence="NO_REFERENCE_" + documentId + "_" + str(pageId), lang=lang, extentInfoJson="{}",isNegativeSentence=False,knowledgeForImages=knowledgeForImages,knowledgeForTables=knowledgeForTables, knowledgeForDocument = knowledgeForDocument, documentPageReference=documentPageReference))
+            knowledges.append(Knowledge(sentence="NO_REFERENCE_" + documentId + "_" + str(pageId), lang="@@_#1", extentInfoJson="{}",isNegativeSentence=False,knowledgeForImages=knowledgeForImages,knowledgeForTables=knowledgeForTables, knowledgeForDocument = knowledgeForDocument, documentPageReference=documentPageReference))
 
     return knowledges
 
