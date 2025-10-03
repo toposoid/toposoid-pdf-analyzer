@@ -1,15 +1,15 @@
 '''
   Copyright (C) 2025  Linked Ideal LLC.[https://linked-ideal.com/]
- 
+
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU Affero General Public License as
   published by the Free Software Foundation, version 3.
- 
+
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU Affero General Public License for more details.
- 
+
   You should have received a copy of the GNU Affero General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
@@ -36,12 +36,12 @@ def load_links_from_file(filepath):
 
 setup(
     name='ToposoidPdfAnalyzer',
-    version="0.6",
+    version="0.7-SNAPSHOT",
     description="",
     author='Makoto Kubodera',
     packages=find_packages(),
     license='',
-    package_data={'ToposoidPdfAnalyzer': ['requirements.txt']},    
+    package_data={'ToposoidPdfAnalyzer': ['requirements.txt']},
     include_package_data=True,
     install_requires=load_requires_from_file("requirements.txt"),
     dependency_links=load_links_from_file("requirements.txt")
