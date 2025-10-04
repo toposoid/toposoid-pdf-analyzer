@@ -36,7 +36,7 @@ def load_links_from_file(filepath):
 
 setup(
     name='ToposoidPdfAnalyzer',
-    version="0.7-SNAPSHOT",
+    version="0.7",
     description="",
     author='Makoto Kubodera',
     packages=find_packages(),
