@@ -16,7 +16,6 @@ dependencies = [
     "pydantic==2.8.2",
     "pyyaml==6.0.2",
     "regex==2024.11.6",
-    "toposoid-python-lib",
     "torchvision==0.17.2",
 ]
 

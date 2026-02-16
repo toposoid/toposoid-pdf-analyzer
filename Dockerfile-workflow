@@ -5,10 +5,12 @@ ARG TARGET_BRANCH
 ARG GIT_TOKEN
 ENV DEPLOYMENT=local
 
+SHELL ["/bin/bash", "-c"]
 
 RUN apt-get update && apt-get upgrade -y \
 && apt install git unzip -y \
 && curl -LsSf https://astral.sh/uv/install.sh | sh \
+&& source ${HOME}/.local/bin/env \
 && git clone https://github.com/toposoid/toposoid-pdf-analyzer.git \
 && cd toposoid-pdf-analyzer \
 && git fetch origin ${TARGET_BRANCH} \
