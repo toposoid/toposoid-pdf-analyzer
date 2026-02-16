@@ -1,0 +1,24 @@
+[project]
+name = "ToposoidPdfAnalyzer"
+version = "0.7"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "imgsim==0.1.2",
+    "mojimoji==0.0.13",
+    "numpy==1.26.4",
+    "opencv-python==4.10.0.84",
+    "openpyxl==3.1.5",
+    "pandas===2.2.3",
+    "pdfservices-sdk==4.1.0",
+    "pillow==10.4.0",
+    "pydantic==2.8.2",
+    "pyyaml==6.0.2",
+    "regex==2024.11.6",
+    "toposoid-python-lib",
+    "torchvision==0.17.2",
+]
+
+[tool.uv.sources]
+toposoid-python-lib = { git = "https://github.com/toposoid/toposoid-python-lib.git", rev = "__##GIT_BRANCH##__" }

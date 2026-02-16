@@ -1,0 +1,18 @@
+FROM python:3.10
+
+WORKDIR /app
+ARG TARGET_BRANCH
+ARG GIT_TOKEN
+ENV DEPLOYMENT=local
+
+
+RUN apt-get update && apt-get upgrade -y \
+&& apt install git unzip -y \
+&& curl -LsSf https://astral.sh/uv/install.sh | sh \
+&& git clone https://github.com/toposoid/toposoid-pdf-analyzer.git \
+&& cd toposoid-pdf-analyzer \
+&& git fetch origin ${TARGET_BRANCH} \
+&& git checkout ${TARGET_BRANCH}
+&& sed s/__##GIT_BRANCH##__/${TARGET_BRANCH}/g pyproject.toml.template > pyproject.toml \
+&& uv sync \
+&& uv add git+https://github.com/toposoid/toposoid-python-lib.git@${TARGET_BRANCH}#egg=ToposoidCommon \

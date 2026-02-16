@@ -182,3 +182,7 @@ contents
 tmp
 testSamples
 unitTest*.py
+.devcontainer
+docker-compose-dev.yml
+pyproject.toml
+uv.lock
