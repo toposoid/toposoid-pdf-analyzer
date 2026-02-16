@@ -8,7 +8,7 @@ ENV DEPLOYMENT=local
 SHELL ["/bin/bash", "-c"]
 
 RUN apt-get update && apt-get upgrade -y \
-&& apt install git unzip -y \
+&& apt install git unzip libgl1-mesa-dev -y \
 && curl -LsSf https://astral.sh/uv/install.sh | sh \
 && source ${HOME}/.local/bin/env \
 && git clone https://github.com/toposoid/toposoid-pdf-analyzer.git \
@@ -17,4 +17,4 @@ RUN apt-get update && apt-get upgrade -y \
 && git checkout ${TARGET_BRANCH} \
 && sed s/__##GIT_BRANCH##__/${TARGET_BRANCH}/g pyproject.toml.template > pyproject.toml \
 && uv sync \
-&& uv add git+https://github.com/toposoid/toposoid-python-lib.git@${TARGET_BRANCH}#egg=ToposoidCommon \
+&& uv add git+https://github.com/toposoid/toposoid-python-lib.git@${TARGET_BRANCH}#egg=ToposoidCommon
