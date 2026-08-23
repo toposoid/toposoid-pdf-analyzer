@@ -20,6 +20,7 @@ import shutil
 import numpy as np
 import pandas as pd
 import copy
+from pathlib import Path
 
 def checkEmptyData(df, path):
     """Normalizing table data_summary_
@@ -52,7 +53,7 @@ def checkEmptyData(df, path):
     tsvFilePath = path + ".tsv"
     parquetFilePath = path + ".parquet"
     df.to_csv(tsvFilePath, index = False, sep='\t', header=False, encoding="utf-8") 
-    df.to_parquet(parquetFilePath)
+    df.to_parquet(parquetFilePath, index=False)
     return True, df
 
 
@@ -117,16 +118,25 @@ def changePath(content, documentId):
     subDirname = ""
     if content.contentType.startswith("IMAGE"):        
         subDirname = "images"
-        #Convert to JPEG
+        originalFilename = Path(content.path).stem
+        ext = content.path.split(".")[-1]    
+        #Copy Original
+        shutil.copy(content.path, "contents/%s/%s!%s.%s" % (subDirname, content.id, originalFilename, ext))
+        #Move JPEG
         targetFile, width, height = convertJpeg(content.path, content.id, "tmp/%s/" % (documentId))
         shutil.move(targetFile, "contents/%s/%s.jpg" % (subDirname, content.id))
-        ext = "png"
     else:
         subDirname = "tables"
-        #Convert to TSV
+        originalFilename = Path(content.path).stem
+        ext = content.path.split(".")[-1]    
+        #Move Original
+        shutil.move(content.path, "contents/%s/%s!%s.%s" % (subDirname, content.id, originalFilename, ext))
+        #Mone Parquet
+        targetFile = content.path + ".parquet"
+        shutil.move(targetFile, "contents/%s/%s.parquet" % (subDirname, content.id))
+        #Mone TSV
         targetFile = content.path + ".tsv"
         shutil.move(targetFile, "contents/%s/%s.tsv" % (subDirname, content.id))
-        ext = "xlsx"
     
     #Move the original file
     #if os.path.isfile(content.path):
