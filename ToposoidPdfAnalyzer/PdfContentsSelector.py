@@ -134,8 +134,8 @@ def changePath(content, documentId):
         #Move Original
         shutil.move(content.path, "contents/%s/%s!%s.%s" % (subDirname, content.id, originalFilename, ext))
         #Mone Parquet
-        targetFile = content.path + ".parquet"
-        shutil.move(targetFile, "contents/%s/%s.parquet" % (subDirname, content.id))
+        #targetFile = content.path + ".parquet"
+        #shutil.move(targetFile, "contents/%s/%s.parquet" % (subDirname, content.id))
         #Mone TSV
         targetFile = content.path + ".tsv"
         shutil.move(targetFile, "contents/%s/%s.tsv" % (subDirname, content.id))
