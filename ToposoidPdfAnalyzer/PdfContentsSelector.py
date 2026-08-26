@@ -54,7 +54,7 @@ def checkEmptyData(df, path):
     parquetFilePath = path + ".parquet"
     #Since it is being loaded with `header=False`, the header is excluded from the output.
     df.to_csv(tsvFilePath, index = False, header = False, sep='\t', encoding="utf-8") 
-    df.to_parquet(parquetFilePath, index=False, header = False)
+    df.to_parquet(parquetFilePath, index=False)
     return True, df
 
 
